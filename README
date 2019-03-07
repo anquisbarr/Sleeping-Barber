@@ -1,12 +1,3 @@
 README - Sleeping Barber
 
-Synchronization Scheme:
-o My synch scheme is pretty basic, I used one pthread mutex lock to enforce mutual exclusion when decrementing the variable NUM_CHAIRS, which keeps track of how many available waiting room chairs there are. 
-
-o I only used this when decrementing because later, when the barber comes and takes the customer, that customer will have already had to wait for an available barber semaphore. Thus, the increment portion for NUM_CHAIRS is already securely locked. 
-
-o I am using a semaphore for barbers that is initialized to 3 barbers. They are used to grab customers one after the other, cut their hair, then signal that they are available again.
-
-Initialization:
-o pthread_mutex_t lock - Initialized with 1 mutex lock
-o sem_t barbers - Initialized with 3 barbers as specified
+This program uses pthread_mutex_t locks to ensure mutual exclusion as well as sem_t to implement the 3 barbers that are present in my program.
